@@ -1,0 +1,434 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#"
+     xml:base="http://www.semanticweb.org/jorge/ontologies/2021/5/untitled-ontology-2"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     ontologyIRI="http://www.semanticweb.org/jorge/ontologies/2021/5/untitled-ontology-2">
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Declaration>
+        <Class IRI="#Alumno"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Asignatura"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AsignaturaObligatoria"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AsignaturaOptativa"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#AsignaturaRama"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Curso"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Persona"/>
+    </Declaration>
+    <Declaration>
+        <Class IRI="#Profesor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#Imparte"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#esAlumnoDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#esProfesorDe"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#estaMatriculadoEn"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#formadoPor"/>
+    </Declaration>
+    <Declaration>
+        <ObjectProperty IRI="#seCursaEn"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Año"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Créditos"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#CréditosMatriculados"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#DNI"/>
+    </Declaration>
+    <Declaration>
+        <DataProperty IRI="#Nombre"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#A1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#A2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#A3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#A4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Alumno1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Alumno2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Curso1"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Curso2"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Curso3"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Curso4"/>
+    </Declaration>
+    <Declaration>
+        <NamedIndividual IRI="#Profesor1"/>
+    </Declaration>
+    <EquivalentClasses>
+        <Class IRI="#AsignaturaObligatoria"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Asignatura"/>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#Año"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxExclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AsignaturaOptativa"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Asignatura"/>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#Año"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#AsignaturaRama"/>
+        <ObjectIntersectionOf>
+            <Class IRI="#Asignatura"/>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#Año"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#minExclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">2</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+            <DataSomeValuesFrom>
+                <DataProperty IRI="#Año"/>
+                <DatatypeRestriction>
+                    <Datatype abbreviatedIRI="xsd:int"/>
+                    <FacetRestriction facet="http://www.w3.org/2001/XMLSchema#maxExclusive">
+                        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">4</Literal>
+                    </FacetRestriction>
+                </DatatypeRestriction>
+            </DataSomeValuesFrom>
+        </ObjectIntersectionOf>
+    </EquivalentClasses>
+    <EquivalentClasses>
+        <Class IRI="#Persona"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#DNI"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </EquivalentClasses>
+    <SubClassOf>
+        <Class IRI="#Alumno"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#estaMatriculadoEn"/>
+            <Class IRI="#Asignatura"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Alumno"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#DNI"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Asignatura"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#Año"/>
+            <Datatype abbreviatedIRI="xsd:int"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profesor"/>
+        <ObjectSomeValuesFrom>
+            <ObjectProperty IRI="#Imparte"/>
+            <Class IRI="#Asignatura"/>
+        </ObjectSomeValuesFrom>
+    </SubClassOf>
+    <SubClassOf>
+        <Class IRI="#Profesor"/>
+        <DataSomeValuesFrom>
+            <DataProperty IRI="#DNI"/>
+            <Datatype abbreviatedIRI="xsd:string"/>
+        </DataSomeValuesFrom>
+    </SubClassOf>
+    <DisjointClasses>
+        <Class IRI="#Alumno"/>
+        <Class IRI="#Profesor"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#Asignatura"/>
+        <Class IRI="#Curso"/>
+        <Class IRI="#Persona"/>
+    </DisjointClasses>
+    <DisjointClasses>
+        <Class IRI="#AsignaturaObligatoria"/>
+        <Class IRI="#AsignaturaOptativa"/>
+        <Class IRI="#AsignaturaRama"/>
+    </DisjointClasses>
+    <ClassAssertion>
+        <Class IRI="#Curso"/>
+        <NamedIndividual IRI="#Curso1"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Curso"/>
+        <NamedIndividual IRI="#Curso2"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Curso"/>
+        <NamedIndividual IRI="#Curso3"/>
+    </ClassAssertion>
+    <ClassAssertion>
+        <Class IRI="#Curso"/>
+        <NamedIndividual IRI="#Curso4"/>
+    </ClassAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#seCursaEn"/>
+        <NamedIndividual IRI="#A1"/>
+        <NamedIndividual IRI="#Curso1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#seCursaEn"/>
+        <NamedIndividual IRI="#A2"/>
+        <NamedIndividual IRI="#Curso3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#seCursaEn"/>
+        <NamedIndividual IRI="#A3"/>
+        <NamedIndividual IRI="#Curso3"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#seCursaEn"/>
+        <NamedIndividual IRI="#A4"/>
+        <NamedIndividual IRI="#Curso4"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaMatriculadoEn"/>
+        <NamedIndividual IRI="#Alumno1"/>
+        <NamedIndividual IRI="#A1"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#estaMatriculadoEn"/>
+        <NamedIndividual IRI="#Alumno2"/>
+        <NamedIndividual IRI="#A2"/>
+    </ObjectPropertyAssertion>
+    <ObjectPropertyAssertion>
+        <ObjectProperty IRI="#Imparte"/>
+        <NamedIndividual IRI="#Profesor1"/>
+        <NamedIndividual IRI="#A1"/>
+    </ObjectPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Año"/>
+        <NamedIndividual IRI="#A1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Créditos"/>
+        <NamedIndividual IRI="#A1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Año"/>
+        <NamedIndividual IRI="#A2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Créditos"/>
+        <NamedIndividual IRI="#A2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">6</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Año"/>
+        <NamedIndividual IRI="#A4"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#DNI"/>
+        <NamedIndividual IRI="#Alumno1"/>
+        <Literal>65465161V</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Nombre"/>
+        <NamedIndividual IRI="#Alumno1"/>
+        <Literal>Raul</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#DNI"/>
+        <NamedIndividual IRI="#Alumno2"/>
+        <Literal>65465161V</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Nombre"/>
+        <NamedIndividual IRI="#Alumno2"/>
+        <Literal>Rau</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Año"/>
+        <NamedIndividual IRI="#Curso1"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">1</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Año"/>
+        <NamedIndividual IRI="#Curso2"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">2</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Año"/>
+        <NamedIndividual IRI="#Curso3"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">3</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Año"/>
+        <NamedIndividual IRI="#Curso4"/>
+        <Literal datatypeIRI="http://www.w3.org/2001/XMLSchema#int">4</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#DNI"/>
+        <NamedIndividual IRI="#Profesor1"/>
+        <Literal>345345235T</Literal>
+    </DataPropertyAssertion>
+    <DataPropertyAssertion>
+        <DataProperty IRI="#Nombre"/>
+        <NamedIndividual IRI="#Profesor1"/>
+        <Literal>Francisco</Literal>
+    </DataPropertyAssertion>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#esAlumnoDe"/>
+        <ObjectProperty IRI="#esProfesorDe"/>
+    </InverseObjectProperties>
+    <InverseObjectProperties>
+        <ObjectProperty IRI="#formadoPor"/>
+        <ObjectProperty IRI="#seCursaEn"/>
+    </InverseObjectProperties>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#Imparte"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#esAlumnoDe"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#esProfesorDe"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#estaMatriculadoEn"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#formadoPor"/>
+    </IrreflexiveObjectProperty>
+    <IrreflexiveObjectProperty>
+        <ObjectProperty IRI="#seCursaEn"/>
+    </IrreflexiveObjectProperty>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#Imparte"/>
+        <Class IRI="#Profesor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#esProfesorDe"/>
+        <Class IRI="#Profesor"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#estaMatriculadoEn"/>
+        <Class IRI="#Alumno"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#formadoPor"/>
+        <Class IRI="#Curso"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyDomain>
+        <ObjectProperty IRI="#seCursaEn"/>
+        <Class IRI="#Asignatura"/>
+    </ObjectPropertyDomain>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#Imparte"/>
+        <Class IRI="#Asignatura"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#esProfesorDe"/>
+        <Class IRI="#Alumno"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#estaMatriculadoEn"/>
+        <Class IRI="#Asignatura"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#formadoPor"/>
+        <Class IRI="#Asignatura"/>
+    </ObjectPropertyRange>
+    <ObjectPropertyRange>
+        <ObjectProperty IRI="#seCursaEn"/>
+        <Class IRI="#Curso"/>
+    </ObjectPropertyRange>
+    <FunctionalDataProperty>
+        <DataProperty IRI="#DNI"/>
+    </FunctionalDataProperty>
+    <DataPropertyRange>
+        <DataProperty IRI="#Año"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Créditos"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#CréditosMatriculados"/>
+        <Datatype abbreviatedIRI="xsd:int"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#DNI"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+    <DataPropertyRange>
+        <DataProperty IRI="#Nombre"/>
+        <Datatype abbreviatedIRI="xsd:string"/>
+    </DataPropertyRange>
+</Ontology>
+
+
+
+<!-- Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi -->
+
