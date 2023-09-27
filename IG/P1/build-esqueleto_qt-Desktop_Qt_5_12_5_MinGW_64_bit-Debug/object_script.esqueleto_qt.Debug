@@ -1,0 +1,14 @@
+debug/basic_object3d.o
+debug/cone.o
+debug/cube.o
+debug/file_ply_stl.o
+debug/generation.o
+debug/object3d.o
+debug/axis.o
+debug/piramidedoble.o
+debug/tetrahedron.o
+debug/main.o
+debug/glwidget.o
+debug/window.o
+debug/moc_glwidget.o
+debug/moc_window.o
