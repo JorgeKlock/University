@@ -1,0 +1,3 @@
+D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/P2_2023/QAP2_CPP/QAP2/out/build/x64-Debug (predeterminado)/CMakeFiles/rebuild_cache.dir
+D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/P2_2023/QAP2_CPP/QAP2/out/build/x64-Debug (predeterminado)/CMakeFiles/QAP2.dir
+D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/P2_2023/QAP2_CPP/QAP2/out/build/x64-Debug (predeterminado)/CMakeFiles/edit_cache.dir
