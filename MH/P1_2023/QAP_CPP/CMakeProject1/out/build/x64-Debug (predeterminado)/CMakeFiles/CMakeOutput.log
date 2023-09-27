@@ -1,0 +1,83 @@
+The system is: Windows - 10.0.19045 - AMD64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: D:/ProgramFiles/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Compilador de optimización de C/C++ de Microsoft (R) versión 19.27.29112 para x64
+(C) Microsoft Corporation. Todos los derechos reservados.
+
+CMakeCCompilerId.c
+Microsoft (R) Incremental Linker Version 14.27.29112.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCCompilerId.exe 
+CMakeCCompilerId.obj 
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.exe"
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CMakeCCompilerId.obj"
+
+The C compiler identification is MSVC, found in "D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/P1_2023/QAP_CPP/CMakeProject1/out/build/x64-Debug (predeterminado)/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdC/CMakeCCompilerId.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: D:/ProgramFiles/Microsoft Visual Studio/2019/Community/VC/Tools/MSVC/14.27.29110/bin/Hostx64/x64/cl.exe 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+Compilador de optimización de C/C++ de Microsoft (R) versión 19.27.29112 para x64
+(C) Microsoft Corporation. Todos los derechos reservados.
+
+CMakeCXXCompilerId.cpp
+Microsoft (R) Incremental Linker Version 14.27.29112.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+/out:CMakeCXXCompilerId.exe 
+CMakeCXXCompilerId.obj 
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.exe"
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CMakeCXXCompilerId.obj"
+
+The CXX compiler identification is MSVC, found in "D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/P1_2023/QAP_CPP/CMakeProject1/out/build/x64-Debug (predeterminado)/CMakeFiles/3.17.20032601-MSVC_2/CompilerIdCXX/CMakeCXXCompilerId.exe"
+
+Determining if the C compiler works passed with the following output:
+Change Dir: D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/P1_2023/QAP_CPP/CMakeProject1/out/build/x64-Debug (predeterminado)/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/ProgramFiles/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_f7d4e && [1/2] Building C object CMakeFiles\cmTC_f7d4e.dir\testCCompiler.c.obj
+[2/2] Linking C executable cmTC_f7d4e.exe
+
+
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/P1_2023/QAP_CPP/CMakeProject1/out/build/x64-Debug (predeterminado)/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/ProgramFiles/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_ceb1a && [1/2] Building C object CMakeFiles\cmTC_ceb1a.dir\CMakeCCompilerABI.c.obj
+Nota: inclusión del archivo: D:\ProgramFiles\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.17\Modules\CMakeCompilerABI.h
+[2/2] Linking C executable cmTC_ceb1a.exe
+
+
+
+Determining if the CXX compiler works passed with the following output:
+Change Dir: D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/P1_2023/QAP_CPP/CMakeProject1/out/build/x64-Debug (predeterminado)/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/ProgramFiles/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_6389a && [1/2] Building CXX object CMakeFiles\cmTC_6389a.dir\testCXXCompiler.cxx.obj
+[2/2] Linking CXX executable cmTC_6389a.exe
+
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/P1_2023/QAP_CPP/CMakeProject1/out/build/x64-Debug (predeterminado)/CMakeFiles/CMakeTmp
+
+Run Build Command(s):D:/ProgramFiles/Microsoft Visual Studio/2019/Community/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_8a2ca && [1/2] Building CXX object CMakeFiles\cmTC_8a2ca.dir\CMakeCXXCompilerABI.cpp.obj
+Nota: inclusión del archivo: D:\ProgramFiles\Microsoft Visual Studio\2019\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\share\cmake-3.17\Modules\CMakeCompilerABI.h
+[2/2] Linking CXX executable cmTC_8a2ca.exe
+
+
+
