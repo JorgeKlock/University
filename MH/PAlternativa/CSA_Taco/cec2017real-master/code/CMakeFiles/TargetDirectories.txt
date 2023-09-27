@@ -1,0 +1,9 @@
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/CMakeFiles/edit_cache.dir
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/CMakeFiles/cec17_test_func.dir
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/CMakeFiles/testrandom.dir
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/CMakeFiles/test.dir
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/CMakeFiles/testCSAbl.dir
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/CMakeFiles/testsolis.dir
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/CMakeFiles/rebuild_cache.dir
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/CMakeFiles/testCSAvariable.dir
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/CMakeFiles/testCSA.dir

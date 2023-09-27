@@ -1,0 +1,20 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/cec17.h
+
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/testsolis.cc
+cec17.h
+/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code/cec17.h
+iostream
+-
+vector
+-
+random
+-
+

@@ -1,0 +1,1 @@
+/usr/bin/c++    -rdynamic CMakeFiles/testCSAbl.dir/testCSAbl.o  -o testCSAbl -Wl,-rpath,/mnt/d/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA_Taco/cec2017real-master/code libcec17_test_func.so 
