@@ -1,0 +1,40 @@
+
+
+*******************************************************************************
+Mon Mar  9 19:19:57 2020
+
+
+FIT:    data read from 'floyd.dat'
+        format = z
+        #datapoints = 26
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=a*x**3+b*x**2+c*x+d
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a             b             c             d            
+   0 6.7888838727e+17   0.00e+00  8.07e+07    1.000000e+00   1.000000e+00   1.000000e+00   1.000000e+00
+  12 4.7206065906e-04  -9.15e-04  8.07e-05    5.391360e-09   8.072274e-07  -2.582062e-04   2.301149e-02
+
+After 12 iterations the fit converged.
+final sum of squares of residuals : 0.000472061
+rel. change during last iteration : -9.15292e-09
+
+degrees of freedom    (FIT_NDF)                        : 22
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0046322
+variance of residuals (reduced chisquare) = WSSR/ndf   : 2.14573e-05
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 5.39136e-09      +/- 1.769e-10    (3.281%)
+b               = 8.07227e-07      +/- 2.208e-07    (27.35%)
+c               = -0.000258206     +/- 8.279e-05    (32.06%)
+d               = 0.0230115        +/- 0.009002     (39.12%)
+
+correlation matrix of the fit parameters:
+                a      b      c      d      
+a               1.000 
+b              -0.991  1.000 
+c               0.956 -0.985  1.000 
+d              -0.867  0.917 -0.967  1.000 

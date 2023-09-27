@@ -1,0 +1,30 @@
+
+
+*******************************************************************************
+Mon Mar  9 19:23:56 2020
+
+
+FIT:    data read from 'hanoi.dat'
+        format = z
+        #datapoints = 26
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x)=a*2**x
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 1.5372286515e+18   0.00e+00  2.43e+08    1.000000e+00
+   5 8.7152933337e-04  -7.84e-10  2.43e+03    6.946337e-09
+
+After 5 iterations the fit converged.
+final sum of squares of residuals : 0.000871529
+rel. change during last iteration : -7.83734e-15
+
+degrees of freedom    (FIT_NDF)                        : 25
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.00590434
+variance of residuals (reduced chisquare) = WSSR/ndf   : 3.48612e-05
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 6.94634e-09      +/- 4.762e-12    (0.06856%)
