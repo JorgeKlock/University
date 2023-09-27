@@ -1,0 +1,15 @@
+Este juego aplica el funcionamiento del cuatro en ralla (puedes colocar piezas por turnos en cada una
+de las columnas disponibles y caerán hasta el fondo), pero donde el objetivo primordial es 
+no hacer 4 en raya. Es decir, un jugador gana si su oponente hace 4 en ralla.
+La única regla adicional a esta premisa es que cada 5 turnos (turnos 5, 10, 15,...[5N]) la ficha que 
+colocará el jugador será una ficha bomba. 
+Un jugador puede usar su turno para en lugar de colocar una ficha explotar su ficha bomba, limpiando 
+todas las piezas propias de dicha fila (provocando la caída en cascada de todas las que se encuentren
+encima de éstas), está claro que es importante utilizar esta mecánica para tratar de provocar 
+un cuatro en ralla del oponente.
+Finalmente mencionar que si un jugador alcanza un turno 5N teniendo una ficha bomba no explotada
+en juego, dicho jugador colocará una ficha normal y no tendrá acceso a otra ficha bomba hasta el 
+siguiente turno 5N. Por ejemplo: Pedrito coloca su ficha bomba en el 5º turno, llegado el turno 10º
+explota su bomba, en su siguiente turno, el 11º Pedrito colocará una ficha normal, 
+también ocurriría esto si lo explotara el turno 12-16-28-2383, hasta que no explote la bomba y llegue 
+un turno 5N no recibirá otra.
