@@ -1,0 +1,788 @@
+<?xml version="1.0" encoding="UTF8"?>
+<aiml version="2.0">
+<!--REGLAS DE AIML PARA LA RESOLUCION DE LA PRACTICA 1-->
+<!--JORGE GANGOSO KLOCK 24.03.2019-->
+<!--CAPITULO NUEVO-->
+<category>
+<pattern>[Introduce anade] un (nuevo) [capitulo episodio] [de en a] la temporada <set>number</set> de *</pattern>
+	<template>
+	<think>
+	<set name="temporada"><star index="1"/></set>
+	<set name="nombreserie"><star index="2"/></set>
+	</think>
+		Dime el titulo del capitulo
+	</template>
+</category>
+<category>
+<pattern> * </pattern>
+<that>Dime el titulo del capitulo</that>
+	<template>
+	<think>
+	<set name="titulo"><star/></set>
+	</think>
+		Cuanto dura el capitulo?
+	</template>
+</category>
+<category>
+<pattern><set>number</set></pattern>
+<that>Cuanto dura el capitulo</that>
+	<template>
+	<think>
+	<set name="duracion"><star/></set>
+<set name="capitulo"><get name="titulo"/>@<get name="duracion"/>@</set>
+<set name="capitulocodificado"><srai>CODE <get name="capitulo"/></srai></set>
+<set name="temporadacodificado">temporada<get name="temporada"/></set>
+<set name="temporadamapa"><map><name><get name="nombreserie"/></name><get name="temporadacodificado"/></map></set>
+	<set var="existe0">
+	<srai>FINDITEM <get name="capitulocodificado"/> IN 		<get name="temporadamapa"/></srai>
+	</set>
+	</think>
+	<condition var="existe0">
+	<li value="0">
+	<think>
+<set name="capitulosunidos"><map><name><get name="nombreserie"/></name><get name="temporadacodificado"/></map><get name="capitulocodificado"/>	</set>
+		<!-- actualizar mapa-->
+		<modifymap>
+			<name><get name="nombreserie"/></name>
+			<key><get name="temporadacodificado"/></key>
+			<value><get name="capitulosunidos"/></value>
+		</modifymap>
+	</think>
+		Capitulo anadido
+	</li>
+	<li>
+		Ya existe el capitulo o la temporada no es correcta.
+	</li>
+	</condition>
+</template>
+</category>
+
+<!--NUEVA SERIE-->
+<!--DETECCION SERIE NO REGISTRADA-->
+<category>
+<pattern> De que va (la serie) * </pattern>
+	<template>
+	<star/> no esta en el catalogo. Quieres anadirla?
+	<think>
+	<set name="serie"><star/></set> 
+	<set name="topic">serienueva</set>
+	</think>
+	</template>
+</category>
+	<topic name="serienueva">
+<category>
+<pattern>[Si vale ok claro]</pattern>
+     <template>
+Vale, crea en la carpeta maps un archivo llamado <get name="serie"/>.txt y reiniciame, despues pideme que anada la serie <get name="serie"/>
+	</template>
+</category>
+	</topic>
+<!--ANADIR LA SERIE NUEVA-->
+<category>
+<pattern> Anade la serie * </pattern>
+	<template>
+	<think>
+	<set name="serieanadida"><star/></set>
+	</think>
+A continuacion te ire preguntando cosas sobre la serie <star/>. Vale? 
+	<think>
+	<set name="topic">anadirserie</set>
+	</think>
+	</template>
+</category>
+<topic name="anadirserie">
+<category>
+      <pattern>$[vale si ok]</pattern>
+      <template>
+	Que plataforma la ofrece?
+      </template>
+</category>
+<category>
+	<pattern>*</pattern>
+	<that>Que plataforma la ofrece</that>
+	<template>
+	<think>
+		<addtoset>
+			<name>seriesnetflix</name>
+			<key><get name="serie"/></key>
+		</addtoset>
+		<addtomap>
+			<name><get name="serieanadida"/></name>
+			<key>plataforma</key>
+			<value><star/></value>
+		</addtomap>
+	</think>
+	A que generos pertenece
+	</template>
+</category>
+<category>
+	<pattern>*</pattern>
+	<that>A QUE GENEROS PERTENECE</that>
+	<template>
+	<think>	
+		<addtomap>
+			<name><get name="serieanadida"/></name>
+			<key>genero</key>
+			<value><star/></value>
+		</addtomap>
+	</think>
+	En que idiomas esta?
+	</template>
+</category>
+<category>
+	<pattern>*</pattern>
+	<that>EN QUE IDIOMAS ESTA</that>
+	<template>
+	<think>	
+		<addtomap>
+			<name><get name="serieanadida"/></name>
+			<key>idiomas</key>
+			<value><star/></value>
+		</addtomap>
+	</think>
+	Que subtitulos tiene?
+	</template>
+</category>
+<category>
+	<pattern>*</pattern>
+	<that>QUE SUBTITULOS TIENE</that>
+	<template>
+	<think>	
+		<addtomap>
+			<name><get name="serieanadida"/></name>
+			<key>subtitulos</key>
+			<value><star/></value>
+		</addtomap>
+	</think>
+	De que trata?
+	</template>
+</category>
+<category>
+	<pattern>*</pattern>
+	<that>DE QUE TRATA</that>
+	<template>
+	<think>	
+	<set name="sinopsiscodificada">
+	<srai>CODE <star/></srai>
+	</set>
+	<addtomap>
+		<name><get name="serieanadida"/></name>
+		<key>sinopsis</key>
+		<value><get name="sinopsiscodificada"/></value>
+	</addtomap>
+	</think>
+	Cual es la web?
+	</template>
+</category>
+<category>
+	<pattern>*</pattern>
+	<that>CUAL ES LA WEB</that>
+	<template>
+	<think>	
+		<addtomap>
+			<name><get name="serieanadida"/></name>
+			<key>web</key>
+			<value><star/></value>
+		</addtomap>
+	</think>
+La informacion sobre la nueva serie ha sido guardada, si desea incluir temporadas solo pidamelo.
+	</template>
+</category>
+</topic>
+
+<!--TEMPORADA NUEVA Y PRIMER CAPITULO-->
+<category>
+<pattern>[Crea introduce anade] una (nueva) temporada [de para a] (la serie) *</pattern>
+	<template>
+	<think>	
+	<set name="serienuevatemporada"><star/></set>
+	<set var="numerotemporadanueva">
+	<map name="successor">
+	<srai>CUANTAS TEMPORADAS TIENE LA SERIE <get name="serienuevatemporada"/></srai>
+	</map>
+	</set>
+	<addtomap>	
+	<name><get name="serienuevatemporada"/></name>
+	<key>temporada<get var="numerotemporadanueva"/></key>
+	<value>@</value>
+	</addtomap>
+	</think>
+A continuacion te pedire los datos del primer capitulo de la nueva temporada.
+	<srai>
+	INTRODUCE UN NUEVO CAPITULO EN LA TEMPORADA 
+	<get var="numerotemporadanueva"/> DE 
+	<get name="serienuevatemporada"/>
+	</srai>
+	</template>
+</category>
+
+				<!--CONSULTAS-->
+<!--IDIOMAS-->
+<category>
+<pattern> En que idiomas esta (la serie) <set>seriesnetflix</set></pattern>
+	<template>
+	<think>
+	<set var="idiomas">
+	<srai>
+	decodear <map><name><star/></name>idiomas</map>		</srai>
+	</set>
+	<set var="tmp"></set>
+	<set var="cantidadidiomas">
+	<srai>count <get var="idiomas"/></srai>
+	</set>
+	<set var="contador">1</set>	
+	</think>
+	<condition var="contador">
+		<li><value><get var="cantidadidiomas"/></value> 
+<think>
+<set var="tmp"><get var="tmp"/> <first><get var="idiomas"/></first></set>
+</think>
+		</li>
+		<li><value><map name="predecessor"><get var="cantidadidiomas"/></map></value>
+
+<think>
+<set var="tmp"><get var="tmp"/><first><get var="idiomas"/></first> y</set> 
+<set var="idiomas"><rest><get var="idiomas"/></rest></set>
+<set var="contador"><map name="successor"><get var="contador"/></map></set>
+</think>
+<loop/>
+		</li>
+		<li>
+<think>
+<set var="tmp"><get var="tmp"/><first><get var="idiomas"/></first>, </set> 
+<set var="idiomas"><rest><get var="idiomas"/></rest></set>
+<set var="contador"><map name="successor"><get var="contador"/></map></set>
+</think><loop/>
+
+		</li>
+	</condition>
+<get var="tmp"/>
+	</template>
+</category>
+
+<category>
+<pattern> (La serie) <set>seriesnetflix</set> esta en * </pattern>
+<template>
+<think>
+	<set var="serie"><star index="1"/></set>
+	<set var="idiomasserie">
+	<srai>decodear <map><name><get var="serie"/></name>idiomas</map></srai>
+	</set>
+
+	<set var="idioma"><star index="2"/></set>
+	<set var="existe"><srai>FINDITEM <get var="idioma"/> IN <get var="idiomasserie"/></srai></set>
+</think>
+	<condition var="existe">
+	<li value="0">
+		No, lo siento.
+	</li>
+	<li>
+		Si, ese idioma esta disponible.
+	</li>
+	</condition>
+</template>	
+</category>
+<category>
+<pattern> (En) cuantos idiomas [esta tiene] (la serie) <set>seriesnetflix</set></pattern>
+	<template>
+	<think>
+	<set var="idiomas">
+	<srai>
+	decodear <map><name><star/></name>idiomas</map>		</srai>
+	</set>
+	<set var="cantidadidiomas">
+	<srai>count <get var="idiomas"/></srai>
+	</set>
+	</think>
+Esta en <get var="cantidadidiomas"/> idiomas.
+	</template>
+</category>
+
+
+<!--SUBTITULOS-->
+<category>
+<pattern> Que subtitulos tiene (la serie) <set>seriesnetflix</set></pattern>
+	<template>
+	<think>
+	<set var="subs">
+	<srai>
+	decodear <map><name><star/></name>subtitulos</map>		</srai>
+	</set>
+	<set var="tmp"></set>
+	<set var="cantidadsubs">
+	<srai>count <get var="subs"/></srai>
+	</set>
+	<set var="contador">1</set>	
+	</think>
+	<condition var="contador">
+		<li><value><get var="cantidadsubs"/></value> 
+<think>
+<set var="tmp"><get var="tmp"/> <first><get var="subs"/></first></set>
+</think>
+		</li>
+		<li><value><map name="predecessor"><get var="cantidadsubs"/></map></value>
+
+<think>
+<set var="tmp"><get var="tmp"/><first><get var="subs"/></first> y</set> 
+<set var="subs"><rest><get var="subs"/></rest></set>
+<set var="contador"><map name="successor"><get var="contador"/></map></set>
+</think>
+<loop/>
+		</li>
+		<li>
+<think>
+<set var="tmp"><get var="tmp"/><first><get var="subs"/></first>, </set> 
+<set var="subs"><rest><get var="subs"/></rest></set>
+<set var="contador"><map name="successor"><get var="contador"/></map></set>
+</think><loop/>
+
+		</li>
+	</condition>
+<get var="tmp"/>
+	</template>
+</category>
+
+<category>
+<pattern> (La serie) <set>seriesnetflix</set> [tiene esta] subtitul+ [en de] * </pattern>
+<template>
+<think>
+	<set var="serie"><star index="1"/></set>
+	<set var="subsserie">
+	<srai>decodear <map><name><get var="serie"/></name>subtitulos</map></srai>
+	</set>
+
+	<set var="subs"><star index="2"/></set>
+	<set var="existe"><srai>FINDITEM <get var="subs"/> IN <get var="subsserie"/></srai></set>
+</think>
+	<condition var="existe">
+	<li value="0">
+		No, lo siento.
+	</li>
+	<li>
+		Si, esos subtitulos estan disponibles.
+	</li>
+	</condition>
+</template>	
+</category>
+
+<category>
+<pattern> Cuantos subtitulos tiene (la serie) <set>seriesnetflix</set></pattern>
+	<template>
+	<think>
+	<set var="subs">
+	<srai>
+	decodear <map><name><star/></name>subtitulos</map>		</srai>
+	</set>
+	<set var="cantidadsubs">
+	<srai>count <get var="subs"/></srai>
+	</set>
+	</think>
+Tiene <get var="cantidadsubs"/> subtitulos.
+	</template>
+</category>
+
+<!--CAPITULOS-->
+<category>
+<pattern>cuantos [capitulos episodios] tiene la temporada <set>number</set> de (la serie) <set>seriesnetflix</set></pattern>
+<template>
+	<think>
+	<set var="temporada"><star index="1"/></set>
+	<set var="solucion">0</set>
+	<set var="todoscaps"><srai>decodear <map><name><star index="2"/></name>temporada<get var="temporada"/></map></srai></set>
+	<set var="iteraciones"><srai>count <get var="todoscaps"/></srai></set>
+	</think>
+<condition var="iteraciones">
+	<li value="0">		
+		La temporada <get var="temporada"/> tiene <get var="solucion"/> capitulos
+	</li>
+	<li>
+<think>
+<set var="iteraciones"><map name="predecessor"><get var="iteraciones"/></map></set>
+<set var="iteraciones"><map name="predecessor"><get var="iteraciones"/></map></set>
+<set var="solucion"><map name="successor"><get var="solucion"/></map></set>
+</think>
+<loop/>
+	</li>
+	</condition>
+	
+</template>
+</category>
+	
+
+
+
+<category>
+<pattern>cuantos [capitulos episodios] tiene (la serie) <set>seriesnetflix</set></pattern>
+<template>
+<think>
+<set var="serie"><star/></set>
+<set var="cantidadtemporadas"><srai>CUANTAS TEMPORADAS TIENE LA SERIE <get var="serie"/></srai></set>
+<set var="temp"></set>
+<set var="solucion">0</set>
+</think>
+	<condition var="cantidadtemporadas">
+	<li value="0">
+	</li>
+	<li>
+<think>
+<set var="temp"><get var="temp"/> <srai>decodear <map><name><get var="serie"/></name>temporada<get var="cantidadtemporadas"/></map></srai></set>
+<set var="cantidadtemporadas"><map name="predecessor"><get var="cantidadtemporadas"/></map></set>
+</think>
+<loop/>
+	</li>
+	</condition>
+<think>
+<set var="iteraciones"><srai>count <get var="temp"/></srai></set>
+</think>
+<condition var="iteraciones">
+	<li value="0">		
+La serie <get var="serie"/> tiene <get var="solucion"/> capitulos
+	</li>
+	<li>
+<think>
+<set var="iteraciones"><map name="predecessor"><get var="iteraciones"/></map></set>
+<set var="iteraciones"><map name="predecessor"><get var="iteraciones"/></map></set>
+<set var="solucion"><map name="successor"><get var="solucion"/></map></set>
+</think>
+<loop/>
+	</li>
+	</condition>
+</template>
+</category>
+
+<category>
+<pattern>Como se llama el [capitulo episodio] <set>number</set> de la temporada <set>number</set> de (la serie) <set>seriesnetflix</set></pattern>
+<template>
+<think>
+	<set var="numcap"><star index="1"/></set>
+	<set var="temporada"><star index="2"/></set>
+	<set var="serie"><star index="3"/></set>
+	<set var="actual">1</set>
+	<set var="tmp"><srai>decodear <map><name><get var="serie"/></name>temporada<get var="temporada"/></map></srai>
+</set>
+</think>
+	<condition var="actual">
+	<li><value><get var="numcap"/></value>
+	Se llama <srai>decode <srai>top <get var="tmp"/></srai></srai>
+	</li>
+	<li>
+<think>
+<set var="tmp"><srai>remain <get var="tmp"/></srai></set>
+<set var="tmp"><srai>remain <get var="tmp"/></srai></set>
+<set var="actual"><map name="successor"><get var="actual"/></map></set>
+</think>
+<loop/>
+	</li>
+	</condition>
+</template>
+</category>
+
+<category>
+<pattern>Cuanto dura el [capitulo episodio] <set>number</set> de la temporada <set>number</set> de (la serie) <set>seriesnetflix</set></pattern>
+<template>
+<think>
+	<set var="numcap"><star index="1"/></set>
+	<set var="temporada"><star index="2"/></set>
+	<set var="serie"><star index="3"/></set>
+	<set var="actual">1</set>
+	<set var="tmp"><srai>decodear <map><name><get var="serie"/></name>temporada<get var="temporada"/></map></srai>
+</set>
+</think>
+	<condition var="actual">
+	<li><value><get var="numcap"/></value>
+	<think>
+	<set var="tmp"><srai>remain <get var="tmp"/></srai></set>
+	</think>
+	Dura <srai>decode <srai>top <get var="tmp"/></srai></srai> minutos
+	</li>
+	<li>
+<think>
+<set var="tmp"><srai>remain <get var="tmp"/></srai></set>
+<set var="tmp"><srai>remain <get var="tmp"/></srai></set>
+<set var="actual"><map name="successor"><get var="actual"/></map></set>
+</think>
+<loop/>
+	</li>
+	</condition>
+</template>
+</category>
+
+
+
+<!--SINOPSIS-->
+<category>
+<pattern> De que va (la serie) <set>seriesnetflix</set></pattern>
+	<template>
+	<srai>
+	decode <map><name><star/></name>sinopsis</map>		</srai>
+	</template>
+</category>
+<!--TEMPORADAS-->
+<category>
+	<pattern>CUANTAS TEMPORADAS TIENE (LA SERIE) *</pattern>
+	<template>
+	<think>	
+		<set var="contador">1</set>
+		<set var="claves"><readkeys><star/></readkeys></set>
+		<set var="existe1"><srai>FINDITEM temporada<get var="contador"/> IN <get var="claves"/></srai></set>
+		<!--en claves tenemos todas las claves de la serie-->
+	</think>
+		<condition var="existe1">
+			<li value="0">
+				<think>
+				<set var="contador">
+				<map name="predecessor"><get var="contador"/></map>
+				</set>
+				</think>
+				<get var="contador"/>
+			</li>
+			<li>
+				<think>
+				<set var="contador">
+				<map name="successor"><get var="contador"/></map>
+				</set>
+				<set var="existe1"><srai>FINDITEM temporada<get var="contador"/> IN <get var="claves"/></srai></set>
+				</think>
+				<loop/>
+			</li>
+		</condition>
+	</template>
+</category>
+
+
+<!--Entrevista, MEJORABLE-->
+<category>
+	<pattern>Hola</pattern>
+	<template>Hola, como estas?</template>
+</category>
+<category>
+	<pattern>$bien</pattern>
+	<template>Me alegro</template>
+</category>
+<category>
+	<pattern>bien (y tu)</pattern>
+	<template>Bien tambien</template>
+</category>
+<category>
+	<pattern>$gracias</pattern>
+	<template>
+	<li>De nada</li>
+	<li>No hay de que</li>
+	</template>
+</category>
+<!--HABLAR SOBRE TI-->
+<category>
+	<pattern>habl+ [de sobre] ti</pattern>
+	<template>No me gusta mucho hablar de mi misma pero en lo referente al trabajo soy una persona muy correcta y calmada, no me gusta llamar la atencion a menos que sea por un buen trabajo</template>
+</category>
+<category>
+	<pattern>[cuent+ di+] ^ [de sobre] ti</pattern>
+	<template>
+<srai>habla sobre ti</srai>
+	</template>
+</category>
+<!--DEFECTOS PERSONALES-->
+<category>	
+	<pattern>CUAL ES TU MAYOR DEFECTO</pattern>
+	<template>Si una tarea me resulta aburrida me cuesta mucho concentrarme y dedicarle su tiempo. Por suerte no creo que ocurra con su empresa.</template>
+</category>
+<category>
+	<pattern>^ tu ^ defect+</pattern>
+	<template><srai>CUAL ES TU MAYOR DEFECTO</srai></template>
+</category>
+<category>
+	<pattern>^ defect+ [persona+ propi+]</pattern>
+	<template><srai>CUAL ES TU MAYOR DEFECTO</srai></template>
+</category>
+<category>
+	<pattern>$[negat+ peor malo] ^[de sobre] ti</pattern>
+	<template><srai>CUAL ES TU MAYOR DEFECTO</srai></template>
+</category>
+<category>
+	<pattern>^ [rasgo caracteristica] negativ+</pattern>
+	<template><srai>CUAL ES TU MAYOR DEFECTO</srai></template>
+</category>
+
+
+<!--DEFECTOS JEFE-->
+<category>
+	<pattern>QUE ASPECTOS NO TE GUSTAN DE UN JEFE</pattern>
+	<template>Sinceramente, mientras no salgamos de una estricta legalidad, cada jefe tiene derecho a tener sus politicas y personalidades y somos los trabajadores quienes debemos adecuarnos lo mejor posible para asegurar un ambiente de trabajo saludable.</template>
+</category>
+<category>	
+	<pattern>^ [negativ+ no jefe]  ^ [jefe negativ+ no] ^</pattern>
+	<template><srai>QUE ASPECTOS NO TE GUSTAN DE UN JEFE</srai></template>
+</category>
+	<!--BUENO JEFE-->
+<category>
+	<pattern>^ [aspect+ caract+ cualid+ rasg+] ^ jefe ^</pattern>
+	<template>Ante todo la seriedad y la profesionalidad</template>
+</category>
+
+<!--3 MAYORES VIRTUDES-->
+<category>	
+	<pattern>CUALES SON TUS 3 MAYORES VIRTUDES</pattern>
+	<template>Mis mayores virtudes, seria dificil enumerarlas y mas aun en orden pero si que puedo asegurarle que si hago algo, lo hago como debe hacerse, cualquier otra cosa es una perdida de tiempo.</template>
+</category>
+<category>
+	<pattern>^ [rasg+ aspect+] ^ [positiv+ agradabl+ fav+] ^</pattern>
+	<template><srai>CUALES SON TUS 3 MAYORES VIRTUDES</srai></template>
+</category>
+<category>
+	<pattern>^ [que cuales] ^ mejor+ ^</pattern>
+	<template><srai>CUALES SON TUS 3 MAYORES VIRTUDES</srai></template>
+</category>
+
+
+<!--PREPARADO PARA EL TRABAJO-->
+<category>
+	<pattern>Te consideras preparado para desempeñar las funciones de este puesto</pattern>
+	<template>Nunca se esta preparado del todo pero desde luego poseo los conocimientos y las ganas de empezar a hacer un buen trabajo y de ir creciendo junto con la empresa.</template>
+</category>
+<category>
+	<pattern>^ [preparado cualificado listo] ^ [funciones tareas obligaciones trabajo aqui empresa en] ^</pattern>
+	<template><srai>Te consideras preparado para desempeñar las funciones de este puesto</srai></template>
+</category>
+
+<!--EXPERIENCIA EN EQUIPO-->
+<category>
+	<pattern>Tienes experiencia en la realizacion de proyectos en equipos de trabajo</pattern>
+	<template>Desde luego no va a ser mi primera vez y hasta ahora no he recibido quejas de ningun companero</template>
+</category>
+<category>
+	<pattern>^ [experiencia practica habit+ acostumbrado constumbre] ^ [equipo+ compañer+ camarad+ otr+ mas] ^</pattern>
+	<template><srai>Tienes experiencia en la realizacion de proyectos en equipos de trabajo</srai></template>
+</category>
+
+<!--TRABAJAR FUERA ESPECIALIDAD-->
+<category>
+	<pattern>Realizarias un trabajo que no fuera con tu especialidad</pattern>
+	<template>Siempre y cuando entre dentro de mis capacidades no veo por que deberia importarme</template>
+</category>
+<category>
+	<pattern>^ [no alejado dist+] * especiali+ ^</pattern>
+	<template><srai>Realizarias un trabajo que no fuera con tu especialidad</srai></template>
+</category>
+
+<!--DESPLAZARSE LEJOS-->
+<category>
+	<pattern>Te desplazarias de manera ocasional a otros lugares</pattern>
+	<template>Siempre y cuando no me lo impida alguna situacion de emergencia no hay cosa que me guste mas que un buen paseo</template>
+</category>
+<category>
+	<pattern>^ [transp+ ir+ mover+ desplaz+ acud+ ven+] ^</pattern>
+	<template><srai>Te desplazarias de manera ocasional a otros lugares</srai></template>
+</category>
+
+<!--CREATIVIDAD-->
+<category>
+	<pattern>Te consideras una persona creativa</pattern>
+	<template>Aunque soy capaz de innovar en ocasiones, definitivamente mi punto fuerte consiste en optimizar respuestas existentes mas que en crear nuevas</template>
+</category>
+<category>
+	<pattern>^ [creativ+ origin+ innov+] ^</pattern>
+	<template><srai>Te consideras una persona creativa</srai></template>
+</category>
+<category>
+	<pattern>^ [hacer realizar] ^ [nuev+ nov+] ^</pattern>
+	<template><srai>Te consideras una persona creativa</srai></template>
+</category>
+
+<!--EXPECTATIVAS-->
+<category>
+	<pattern>Que expectativas tienes de este trabajo</pattern>
+	<template>Espero que sea un lugar donde pueda estar a gusto y cumplir mis objetivos a la vez que ayudo a fortalecer al equipo</template>
+</category>
+<category>
+	<pattern>^ [expect+ esper+] ^ [trabajo empleo proyecto aqui nosotros en] ^</pattern>
+	<template><srai>Que expectativas tienes de este trabajo</srai></template>
+</category>
+
+<!--TRABAJOS PARECIDOS-->
+<category>
+	<pattern>Que trabajos has tenido en esta tematica</pattern>
+	<template>Pues que se me vengan a la mente gestor de bases de datos y tambien participe en la creacion de varios programas de software libre relacionados con editores de texto e imagenes</template>
+</category>
+<category>
+	<pattern>^ [trabaj+ emple+ particip+] ^ [tem+ parecid+ semejant+ relacio+ ] ^</pattern>
+	<template><srai>QUE TRABAJOS HAS TENIDO EN ESTA TEMATICA</srai></template>
+</category>
+
+<!--TRABAJO CASA-->
+<category>
+	<pattern>Normalmente te llevas el trabajo a casa</pattern>
+	<template>Hasta el momento no me ha sido necesario para cumplir con las fechas de entrega, aunque si fuera necesario seria mi obligacion por supuesto</template>
+</category>
+<category>	
+	<pattern>^ [trabaj+ tare+ obligac+] ^ [casa hogar entorn+] ^</pattern>
+	<template><srai>Normalmente te llevas el trabajo a casa</srai></template>
+</category>
+
+<!--ASPIRACION SALARIAL-->
+<category>
+	<pattern>Cuales son tus aspiraciones salariales</pattern>
+	<template>Pues a pesar de que se trata de un trabajo que requiere una cualificacion moderada, siempre he sido una persona muy sencilla y con lo suficiente para no necesitar un segundo trabajo estaria bien por mi.</template>
+</category>
+<category>	
+	<pattern>^ [esper+ gustar+ aspir+ querr+ cree piensa pens+] ^ [cobr+ recib+ salar+ ] ^</pattern>
+	<template><srai>CUALES SON TUS ASPIRACIONES SALARIALES</srai></template>
+</category>
+
+
+<!--DONDE TE VES DENTRO DE X AÑOS-->
+<category>
+	<pattern>$Donde te ves (dentro de)(en) <set>number</set> anos</pattern>
+	<template>Dentro de <star/> anos?. Mientras ustedes esten satisfechos con mi trabajo y yo me encuentre a gusto con ustedes, espero que en esta misma sala entregando archivos en lugar de respondiendo a preguntas personales</template>
+</category>
+<category>
+	<pattern>Donde te ves en el futuro</pattern>
+	<template>Pues depende del tiempo, pero en una agradable casa que me podre permitir gracias al sueldo de este empleo en el que habre ascendido con mi esfuerzo.</template>
+</category>
+<category>
+	<pattern>^ [donde como que] ^ [dentro futuro anos tiempo] ^</pattern>
+	<template><srai>Donde te ves en el futuro</srai></template>
+</category>
+
+<!--FALTA EXPERIENCIA-->
+<category>
+	<pattern>No tienes experiencia para el puesto a desempeñar</pattern>
+	<template>Pero si los conocimientos, y en algun lugar tendre que adquirir la experiencia, al fin y al cabo dicen que los jovenes aprendemos rapido y que el ser humano es especialista en adaptarse a entornos nuevos.</template>
+</category>
+<category>
+	<pattern>^ [No ninguna falta experiencia]  ^ [experiencia insuficiente] ^</pattern>
+	<template><srai>No tienes experiencia para el puesto a desempeñar</srai></template>
+</category>
+
+<!--CONOCIMIENTO EMPRESA Y PUESTO-->
+<category>
+	<pattern>Que sabes de la empresa y el puesto de trabajo</pattern>
+	<template>Pues se quienes son, a que se dedican y lo que debo realizar, quien en su sano juicio vendria a una entrevista de trabajo sin saber eso.</template>
+</category>
+<category>
+	<pattern>^ [sab+ conoc+ aprend+ ]  ^ [empresa trabajo+ tarea+ deb+ hacer sitio lugar nosotros nuestr+] ^</pattern>
+	<template><srai>QUE SABES DE LA EMPRESA Y EL PUESTO DE TRABAJO</srai></template>
+</category>
+
+<!--JEFE SE EQUIVOCA-->
+<category>
+	<pattern>Que haces cuando consideras que tu jefe no tiene la razón</pattern>
+	<template>Si es una orden acatarla, ya que por eso es el jefe, sin embargo si hay espacio para el dialogo nunca esta de mas compartir opiniones al fin y al cabo el jefe tambien forma parte del equipo</template>
+</category>
+<category>
+	<pattern>^ $jefe ^ [razon no mal equivo+] ^</pattern>
+	<template><srai>Que haces cuando consideras que tu jefe no tiene la razón</srai></template>
+</category>
+
+
+<!--POR QUE YO-->
+<category>
+	<pattern>Por que deberiamos escogerte a ti</pattern>
+	<template>No dudo que habra pasado y pasara por aqui gente mas que cualificada y que no soy mas que otro en ese monton, pero si no es demasiado descaro, lo que las empresas necesitan ahora es gente joven y con energia para traer el futuro con sus propias manos y por supuesto mentes sin miedo a lo desconocido. </template>
+</category>
+<category>
+	<pattern>^ [Por que raz+ caus+ cos+ escog+ eleg+ contrat+ cre+] ^ ti ^ </pattern>
+	<template><srai>Por que deberiamos escogerte a ti</srai></template>
+</category>
+</aiml>
+
+

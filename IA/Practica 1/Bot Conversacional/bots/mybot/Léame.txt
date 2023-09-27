@@ -1,0 +1,4 @@
+En el archivo reglas.aiml se encuentran la mayoria de las reglas necesarias para la resolución de la práctica aunque no todas, ya que una regla llamada decodear realizada por mí se encuentra en utilidades y es usada por otras reglas. 
+Ademas, este archivo de reglas.aiml contiene primero las reglas para la realizacion del nivel 1 y 2 y al final las del nivel 0. Esto ocurrió por comodidad a la hora de ir realizando la práctica y considere que carecía de importancia a la hora de la evaluación, pero igualmente se lo comunico para que no concluya equívocamente que he realizado los niveles 1 y 2 pero no el 0.
+	
+Un saludo. Jorge Gangoso Klock.
