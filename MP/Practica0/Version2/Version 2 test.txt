@@ -1,0 +1,6 @@
+Si modificamos el fichero punto.h, 
+¿Qué órdenes sería necesario volver a ejecutar para obtener de nuevo el ejecutable?
+¿Y si modificamos circulo.cpp?
+
+a) compilar punto.cpp -> compilar circulo.cpp -> enlazar y crear el archivo objeto central.o
+b) compilar circulo.cpp -> enlazar y crear el archivo objeto central.o

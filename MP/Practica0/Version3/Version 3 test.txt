@@ -1,0 +1,5 @@
+Indique de nuevo qué debemos hacer si modi?camos el ?chero punto.h, 
+¿qué órdenes sería necesario volver a ejecutar para obtener de nuevo el ejecutable? ¿Y si modi?camos circulo.cpp?
+
+a) compilar punto.cpp -> compilar circulo.cpp -> crear la librería libformas -> crear el archivo central.o
+b) compilar circulo.cpp -> crear la librería libformas -> crear el archivo central.o
