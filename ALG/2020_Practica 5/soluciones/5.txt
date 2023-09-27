@@ -1,0 +1,16 @@
+Dimension: 6
+1 39.57 26.15
+3 36.26 23.12
+4 33.48 10.54
+0 38.24 20.42
+2 40.56 25.32
+1 39.57 26.15
+
+
+
+
+Mejor coste: 34
+Nodos expandidos: 49
+Tamaño maximo de cola: 7
+Podas: 4
+Tiempo: 0.0002033
