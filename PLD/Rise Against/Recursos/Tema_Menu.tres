@@ -1,0 +1,46 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://i1ww03hpi0uu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gkvt"]
+bg_color = Color(0.883334, 0.4735, 0.937246, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0, 0, 0, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yeoak"]
+bg_color = Color(0.741176, 0.490196, 0.803922, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.498039, 0.901961, 0.623529, 1)
+border_blend = true
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3lpyw"]
+bg_color = Color(0.2, 0.647059, 0.843137, 1)
+corner_detail = 19
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fu2uk"]
+bg_color = Color(0.00784314, 0.0941176, 0.192157, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0.811765, 0.796078, 0.792157, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_04l7v"]
+bg_color = Color(0.584314, 0.92549, 0.682353, 1)
+
+[resource]
+Button/styles/focus = SubResource("StyleBoxFlat_5gkvt")
+Button/styles/hover = SubResource("StyleBoxFlat_5gkvt")
+Button/styles/normal = SubResource("StyleBoxFlat_yeoak")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_3lpyw")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_3lpyw")
+HSlider/styles/slider = SubResource("StyleBoxFlat_fu2uk")
+Panel/styles/panel = SubResource("StyleBoxFlat_04l7v")
+RichTextLabel/colors/default_color = Color(0.776471, 0, 0.72549, 1)
+RichTextLabel/colors/font_outline_color = Color(1, 1, 1, 1)
+RichTextLabel/constants/outline_size = 4

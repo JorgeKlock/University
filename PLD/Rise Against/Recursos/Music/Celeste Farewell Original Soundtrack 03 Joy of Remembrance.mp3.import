@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ldemm0mn3xe3"
+path="res://.godot/imported/Celeste Farewell Original Soundtrack 03 Joy of Remembrance.mp3-495f154b6432d95129a1c75ea577a909.mp3str"
+
+[deps]
+
+source_file="res://Recursos/Music/Celeste Farewell Original Soundtrack 03 Joy of Remembrance.mp3"
+dest_files=["res://.godot/imported/Celeste Farewell Original Soundtrack 03 Joy of Remembrance.mp3-495f154b6432d95129a1c75ea577a909.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

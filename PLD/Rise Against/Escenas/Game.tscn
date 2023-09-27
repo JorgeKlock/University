@@ -1,0 +1,60 @@
+[gd_scene load_steps=6 format=3 uid="uid://cwpm2x63okj10"]
+
+[ext_resource type="Script" path="res://Escenas/Game.gd" id="1_djwqo"]
+[ext_resource type="PackedScene" uid="uid://ddmcrenuw5o22" path="res://Escenas/GUI.tscn" id="2_cd3eg"]
+[ext_resource type="PackedScene" uid="uid://c6n0wd7mlxh1j" path="res://Escenas/Level_1.tscn" id="2_qpdyc"]
+[ext_resource type="AudioStream" uid="uid://ldemm0mn3xe3" path="res://Recursos/Music/Celeste Farewell Original Soundtrack 03 Joy of Remembrance.mp3" id="3_83r78"]
+[ext_resource type="PackedScene" uid="uid://bsdmfvxe23s62" path="res://Escenas/Level_2.tscn" id="3_wbqiq"]
+
+[node name="Game" type="Node"]
+script = ExtResource("1_djwqo")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -2.0
+offset_right = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 0
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(576, 648)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer/SubViewport"]
+limit_left = 0
+limit_top = -2348
+limit_right = 576
+limit_bottom = 648
+
+[node name="Level1" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("2_qpdyc")]
+position = Vector2(-2, 0)
+
+[node name="Level2" parent="HBoxContainer/SubViewportContainer/SubViewport" instance=ExtResource("3_wbqiq")]
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="HBoxContainer"]
+layout_mode = 2
+
+[node name="SubViewport" type="SubViewport" parent="HBoxContainer/SubViewportContainer2"]
+handle_input_locally = false
+size = Vector2i(576, 648)
+render_target_update_mode = 4
+
+[node name="Camera2D" type="Camera2D" parent="HBoxContainer/SubViewportContainer2/SubViewport"]
+limit_left = 576
+limit_top = -2348
+limit_right = 1152
+limit_bottom = 648
+
+[node name="GUI" parent="." instance=ExtResource("2_cd3eg")]
+layer = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_83r78")
+autoplay = true

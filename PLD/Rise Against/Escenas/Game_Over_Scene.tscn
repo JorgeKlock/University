@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://cepolfjq6i7ma"]
+
+[ext_resource type="Script" path="res://Escenas/Game_Over_Scene.gd" id="1_2andc"]
+[ext_resource type="Theme" uid="uid://i1ww03hpi0uu" path="res://Recursos/Tema_Menu.tres" id="1_nyf7p"]
+
+[sub_resource type="RichTextEffect" id="RichTextEffect_mhl2g"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2andc")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nyf7p")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_nyf7p")
+text = "Player X wins"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+custom_effects = [SubResource("RichTextEffect_mhl2g")]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 328)

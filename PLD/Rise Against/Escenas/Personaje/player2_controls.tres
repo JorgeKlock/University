@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PlayerControls" load_steps=2 format=3 uid="uid://bsbmgsjxfc7lf"]
+
+[ext_resource type="Script" path="res://Escenas/Personaje/PlayerControls.gd" id="1_bwgub"]
+
+[resource]
+script = ExtResource("1_bwgub")
+player_index = 1
+move_left = "p2_move_left"
+move_right = "p2_move_right"
+jump = "p2_jump"
+dash = "p2_dash"
+action = "p2_action"

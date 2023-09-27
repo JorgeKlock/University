@@ -1,0 +1,99 @@
+[gd_scene load_steps=10 format=3 uid="uid://bsdmfvxe23s62"]
+
+[ext_resource type="Script" path="res://Escenas/Level_2.gd" id="1_el5a4"]
+[ext_resource type="PackedScene" uid="uid://c2p5af4oj7lcv" path="res://Escenas/Personaje.tscn" id="2_2ow11"]
+[ext_resource type="Resource" uid="uid://bketxqbt2380s" path="res://Escenas/Personaje/player1_controls.tres" id="3_8nlm5"]
+[ext_resource type="Resource" uid="uid://bsbmgsjxfc7lf" path="res://Escenas/Personaje/player2_controls.tres" id="4_lr2of"]
+[ext_resource type="Texture2D" uid="uid://dtl0era42awar" path="res://Recursos/fondo_de_verdad.png" id="5_71fxw"]
+[ext_resource type="Texture2D" uid="uid://dd06ikx6b8rje" path="res://Recursos/Finish_lane.png" id="6_grfbh"]
+[ext_resource type="PackedScene" uid="uid://ccyor0ejobu5e" path="res://Recursos/TileMap/Level_2_wall.tscn" id="6_joxq6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr2jj"]
+size = Vector2(1145.75, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7htrw"]
+size = Vector2(1152, 50)
+
+[node name="Level2" type="Node2D"]
+script = ExtResource("1_el5a4")
+
+[node name="Player1" parent="." instance=ExtResource("2_2ow11")]
+position = Vector2(320, 612)
+controls = ExtResource("3_8nlm5")
+
+[node name="Player2" parent="." instance=ExtResource("2_2ow11")]
+position = Vector2(864, 608)
+controls = ExtResource("4_lr2of")
+
+[node name="Suelo" type="StaticBody2D" parent="."]
+position = Vector2(0, 1000)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Suelo"]
+position = Vector2(578.125, -344)
+shape = SubResource("RectangleShape2D_tr2jj")
+
+[node name="ColorRect" type="ColorRect" parent="Suelo"]
+offset_left = 4.0
+offset_top = -356.0
+offset_right = 1150.0
+offset_bottom = -332.0
+
+[node name="FondoDeVerdad" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(576, -848)
+texture = ExtResource("5_71fxw")
+
+[node name="Finish_Lane" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Finish_Lane"]
+position = Vector2(576, -2320)
+shape = SubResource("RectangleShape2D_7htrw")
+
+[node name="Sprite2D" type="Sprite2D" parent="Finish_Lane/CollisionShape2D"]
+texture = ExtResource("6_grfbh")
+
+[node name="Level2_Wall" parent="." instance=ExtResource("6_joxq6")]
+position = Vector2(0, -968)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(64, 152, 64, 344, 48, 344)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(1088, 344, 1088, 152, 1104, 344)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(544, 152, 544, -56, 560, 120)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(608, 152, 608, -56, 592, 136)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(48, -136, 48, -312, 32, -136)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(1104, -312, 1104, -136, 1120, -136)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(544, -312, 544, -120, 608, -120, 608, -312)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(256, -936, 256, -1064, 248, -936)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(896, -936, 896, -1064, 904, -936)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(256, -1352, 256, -1864, 248, -1352)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(896, -1352, 896, -1864, 904, -1352)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="Area2D"]
+polygon = PackedVector2Array(544, -1864, 544, -2352, 608, -2352, 608, -1864)
+
+[connection signal="body_entered" from="Finish_Lane" to="." method="_on_finish_lane_body_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

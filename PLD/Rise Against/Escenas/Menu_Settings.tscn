@@ -1,0 +1,83 @@
+[gd_scene load_steps=4 format=3 uid="uid://d83fja5qifs6"]
+
+[ext_resource type="Script" path="res://Escenas/Menu_Settings.gd" id="1_4xsjw"]
+[ext_resource type="Theme" uid="uid://i1ww03hpi0uu" path="res://Recursos/Tema_Menu.tres" id="1_n4ijv"]
+[ext_resource type="AudioStream" uid="uid://ldemm0mn3xe3" path="res://Recursos/Music/Celeste Farewell Original Soundtrack 03 Joy of Remembrance.mp3" id="2_b7l4a"]
+
+[node name="Menu_Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme = ExtResource("1_n4ijv")
+script = ExtResource("1_4xsjw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -29.0
+offset_right = 192.0
+offset_bottom = 29.0
+grow_vertical = 2
+
+[node name="Sound_Button" type="Button" parent="VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+focus_previous = NodePath("../..")
+text = "SOUND"
+
+[node name="HSlider" type="HSlider" parent="VBoxContainer/Sound_Button"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.09278
+anchor_top = 0.209677
+anchor_right = 2.10309
+anchor_bottom = 0.725806
+offset_left = 1.52588e-05
+offset_right = 3.05176e-05
+focus_previous = NodePath("..")
+min_value = -80.0
+max_value = 0.0
+step = 10.0
+tick_count = 8
+metadata/_edit_use_anchors_ = true
+
+[node name="Window_Mode_Button" type="OptionButton" parent="VBoxContainer"]
+layout_mode = 2
+focus_previous = NodePath("../..")
+alignment = 1
+item_count = 4
+selected = 0
+popup/item_0/text = "WINDOW MODE"
+popup/item_0/id = 1
+popup/item_0/disabled = true
+popup/item_0/separator = true
+popup/item_1/text = "Windowed"
+popup/item_1/id = 0
+popup/item_2/text = "Fullscreen"
+popup/item_2/id = 3
+popup/item_3/text = "Exclusive Fullscreen"
+popup/item_3/id = 4
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_b7l4a")
+autoplay = true
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="pressed" from="VBoxContainer/Sound_Button" to="." method="_on_sound_button_pressed"]
+[connection signal="value_changed" from="VBoxContainer/Sound_Button/HSlider" to="." method="_on_h_slider_value_changed"]
+[connection signal="item_selected" from="VBoxContainer/Window_Mode_Button" to="." method="_on_window_mode_button_item_selected"]
