@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF8"?>
+<aiml version="2.0">
+<!--REGLAS DE AIML PARA LA RESOLUCION DE LA PRACTICA 1-->
+<!--NIVEL 1-->
+<!--JORGE GANGOSO KLOCK 25.02.2020-->
+
+<!--COMPROBAR SI DIA LIBRE (DD-MM-YY) Devuelve 0 si OCUPADO, 1 si LIBRE. V-->
+<category>
+<pattern>ESTA LIBRE EL DIA *</pattern> 
+<template>
+<think>
+<!--buscamos si hay hueco por la manana-->
+<set var="huecom"><srai>MANANA LIBRE DIA <star/></srai></set>
+<!--buscamos si hay hueco por la tarde-->
+<set var="huecot"><srai>TARDE LIBRE DIA <star/></srai></set>
+<set var="total"><get var="huecom"/> <get var="huecot"/></set>
+<set var="cantidad"><srai>COUNT <get var="total"/></srai></set>
+</think>
+<!--devolvemos respuesta segun si esta libre o no-->
+	<condition var="cantidad">
+		<li value="0">
+		<!--ocupado-->
+		0
+		</li>
+		<li>
+		<!--libre-->
+		1
+		</li>
+	</condition>
+</template>
+</category>
+
+<!--LISTAR LAS HORAS LIBRES SEGUN SU POSICION EN EL MAP. V-->
+<category>
+<pattern>HORAS LIBRES EL DIA *</pattern>
+<template>
+<!--metemos en dia el estado del dia parametro-->
+<think><set var="dia"><map name="eventos"><star/></map></set></think>
+<!--creamos variable en la que concatenaremos las horas libres-->
+<think>
+<set var="horaslibres"> </set>
+<set var="posicion">1</set>
+	<set var="item"><srai>ITERATE <get var="dia"/></srai></set>
+	<condition var="item">
+		<li value="end"></li>
+		<li value="null">	<!--si encontramos null, guardamos la posicion-->
+			<set var="horaslibres"><get var="horaslibres"/> <get var="posicion"/></set>
+			<set var="posicion"><map name="successor"><get var="posicion"/></map></set>
+			<set var="item">
+				<srai>NEXT</srai>
+			</set>
+			<loop/>
+		</li>
+		<li value="Ocupado">	<!--si no iteramos cambiando las variables-->
+			<set var="posicion"><map name="successor"><get var="posicion"/></map></set>
+			<set var="item">
+				<srai>NEXT</srai>
+			</set>
+		<loop/>
+		</li>
+	</condition>
+</think>
+<get var="horaslibres"/>
+</template>
+</category>
+
+<!--LISTAR LAS HORAS LIBRES POR LA MAÑANA SEGUN POSICION EN MAP. V-->
+<category>
+<pattern>MANANA LIBRE DIA *</pattern> <!--Hacer count al leer por si devolviera vacio-->
+<template>
+<think>
+	<set var="dialibre"><srai>HORAS LIBRES EL DIA <star/></srai></set>
+	<set var="vacio"><srai>COUNT <get var="dialibre"/></srai></set>
+	<set var="mananalibre"></set>
+<condition var="vacio">
+    <li value="0">
+    </li>
+    <li>
+        <set var="horasmanana">9</set>
+        <condition var="horasmanana">
+            <li value="14"></li>
+            <li>		<!--buscamos el numero en dialibre-->
+            <set var="encontrado"><srai>FINDITEM <get var="horasmanana"/> IN <get var="dialibre"/></srai></set>
+                <condition var="encontrado">
+                <li value="0">
+                </li>
+                <li>
+                <set var="mananalibre"><get var="mananalibre"/> <get var="horasmanana"/></set>
+                </li>
+                </condition>
+            <set var="horasmanana"><map name="successor"><get var="horasmanana"/></map></set>
+            <loop/>
+            </li>
+        </condition>
+    </li>
+</condition>
+</think>
+	<get var="mananalibre"/>
+</template>
+</category>		
+
+<!--LISTAR LAS HORAS LIBRES POR LA TARDE SEGUN POSICION EN MAP. V-->
+<category>
+<pattern>TARDE LIBRE DIA *</pattern>    <!--Hacer count al leer por si devolviera vacio-->
+<template>
+<think>
+	<set var="dialibre"><srai>HORAS LIBRES EL DIA <star/></srai></set>
+	<set var="vacio"><srai>COUNT <get var="dialibre"/></srai></set>
+	<set var="tardelibre"></set>
+	<set var="horastarde">14</set>
+<condition var="vacio">
+    <li value="0">
+    </li>
+    <li>
+	<condition var="horastarde">
+		<li value="22"></li>
+		<li>		<!--buscamos el numero en dialibre-->
+		<set var="encontrado"><srai>FINDITEM <get var="horastarde"/> IN <get var="dialibre"/></srai></set>
+			<condition var="encontrado">
+			<li value="0">
+			</li>
+			<li>
+			<set var="tardelibre"><get var="tardelibre"/> <get var="horastarde"/></set>
+			</li>
+			</condition>
+		<set var="horastarde"><map name="successor"><get var="horastarde"/></map></set>
+		<loop/>
+		</li>
+	</condition>
+	</li>
+</condition>
+</think>
+	<get var="tardelibre"/>
+</template>
+</category>
+
+<!--CONVERTIR DD-MMMMMMMMM-YY a DD-MM-YY. V-->
+<category>
+<pattern>CONVERTIR MES *</pattern>
+<template>
+<map name="mes"><star/></map>
+</template>
+</category>
+
+
+<!--Convertir lista numeros a franjas horarias. V-->
+<category>
+<pattern>CONVERTIR * A HORAS</pattern>
+<template>
+<think>
+    <set var="lista"><star/></set>
+    <set var="return"></set>
+    <set var="items"><srai> COUNT <get var="lista"/></srai></set>
+        <condition var="items">
+            <li value="0">
+            </li>
+            <li>
+                <set var="return"><get var="return"/> <map name="predecessor"><srai>TOP <get var="lista"/></srai></map>:00</set>
+                <set var="lista"><srai>REMAIN <get var="lista"/></srai></set>
+                <set var="items"><srai>COUNT <get var="lista"/></srai></set>
+            <loop/>
+            </li>
+        </condition>
+</think>
+        <get var="return"/>
+</template>
+</category>
+
+
+<!--DAR CITA PARA FECHA CONCRETA. IP-->
+<category>
+<pattern>QUISIERA UNA CITA PARA EL <set>number</set> DE <set>month_es</set></pattern>
+<template>
+<think>
+    <set name="fecha"><star/>-<srai>CONVERTIR MES <star index="2"/></srai>-20</set>
+    <set var="libre"><srai>ESTA LIBRE EL DIA <get name="fecha"/></srai></set> <!--1 Libre, 0 Ocupado-->
+</think>
+    <condition var="libre">
+        <li value="1">
+            <think>
+            <set name="topic">confirmacion</set>
+            <set var="huecom"><srai>COUNT <srai>MANANA LIBRE DIA <get name="fecha"/></srai></srai></set>
+            <set var="huecot"><srai>COUNT <srai>TARDE LIBRE DIA <get name="fecha"/></srai></srai></set>
+            </think>
+            <condition var="huecom">
+                <li value="0">  <!--no hay por la manana-->
+                Tenemos hueco por la tarde, a las siguientes horas:
+                <srai>CONVERTIR <srai>TARDE LIBRE DIA <get name="fecha"/></srai> A HORAS</srai>
+                Cual le gustaria mas?
+                </li>
+                <li>    <!--hay por la manana-->
+                <condition var="huecot">
+                    <li value="0">  <!--solamente-->
+                    Tenemos hueco por la manana, a las siguientes horas:
+                    <srai>CONVERTIR <srai>MANANA LIBRE DIA <get name="fecha"/></srai> A HORAS</srai>
+                    Cual le gustaria mas?
+                    </li>
+                    <li>    <!--tambien-->
+                    Tenemos hueco por la manana y por la tarde, a las siguientes horas:
+                    <srai>CONVERTIR <srai>MANANA LIBRE DIA <get name="fecha"/></srai> A HORAS</srai>
+                    <srai>CONVERTIR <srai>TARDE LIBRE DIA <get name="fecha"/></srai> A HORAS</srai>
+                    Cual le gustaria mas?
+                    </li>
+                </condition>
+                </li>
+            </condition>
+            <think><set name="topic">elegirhora</set></think>
+        </li>
+        <li value="0">
+            Ese dia esta ocupado lo lamentamos, ¿desea otro dia?
+            <think><set name="topic">diaalt</set></think>
+        </li>
+     </condition>
+</template>
+</category>
+
+
+<!--DENTRO DE ELEGIR HORA-->
+<topic name="elegirhora">
+
+        <!--Convertimos la hora a posicion dentro del map y comprobamos que es correcta-->
+<category>
+<pattern>^ <set>number</set> ^</pattern>
+<template>
+<think>
+    <set var="hora"><map name="successor"><star index="2"/></map></set>
+    <set var="huecom"><srai>MANANA LIBRE DIA <get name="fecha"/></srai></set>
+    <set var="huecot"><srai>TARDE LIBRE DIA <get name="fecha"/></srai></set>
+    <set var="total"><get var="huecom"/> <get var="huecot"/></set>
+    <set var="correcto"><srai>FINDITEM <get var="hora"/> IN <get var="total"/></srai></set>
+</think>
+    <condition var="correcto">
+    <li value="0">
+    Esa hora no esta disponible, intentelo de nuevo.
+    </li>
+    <li>
+    Excelente, se reservara la hora deseada
+    <think>
+        <!-- coger la cadena de nulls y ocupados -->
+        <set var="dia"><map name="eventos"><get name="fecha"/></map></set>
+        <set var="solucion"></set>
+        <!-- meter ocupado en el sitio q corresponde -->
+        <set var="contador">1</set>
+        <condition var="contador">
+            <li value="26">
+            </li>
+            <li><value><get var="hora"/></value>    <!--si es la hora meter y seguir iterando-->
+                <set var="contador"><map name="successor"><get var="contador"/></map></set>
+                <set var="solucion"><get var="solucion"/> ocupado</set>
+                <set var="dia"><srai>REMAIN <get var="dia"/></srai></set>
+            <loop/>
+            </li>
+            <li>    <!--si no seguir simplemente-->
+                <set var="contador"><map name="successor"><get var="contador"/></map></set>
+                <set var="solucion"><get var="solucion"/> <srai>TOP <get var="dia"/></srai></set>
+                <set var="dia"><srai>REMAIN <get var="dia"/></srai></set>
+            <loop/>
+            </li>
+        </condition>
+    </think>
+        <!--modificamos el map con el nuevo valor-->
+        <modifymap>
+        <name>eventos</name>
+        <key><get name="fecha"/></key>
+        <value><get var="solucion"/></value>
+        </modifymap>
+    </li>
+    </condition>
+<think>
+<set name="topic">unknown</set>
+<set name="fecha">unknown</set>
+<set name="franja">unknown</set>
+<set name="hora">unknown</set>
+</think>
+</template>
+</category>
+
+
+<category>
+<pattern>^ [igual importa indiferente] ^</pattern>
+<template>
+<!--buscar cual es el primer hueco libre y llamar a la funcion de arriba-->
+<think>
+<set var="huecom"><srai>MANANA LIBRE DIA <get name="fecha"/></srai></set>
+<set var="huecot"><srai>TARDE LIBRE DIA <get name="fecha"/></srai></set>
+<set var="total"><get var="huecom"/> <get var="huecot"/></set>
+<set var="solucion"><srai>TOP <get var="total"/></srai></set>
+<srai><map name="predecessor"><get var="solucion"/></map></srai>
+</think>
+Se reservara la primera hora disponible, que tenga un buen dia
+<think>
+<set name="topic">unknown</set>
+<set name="fecha">unknown</set>
+<set name="franja">unknown</set>
+<set name="hora">unknown</set>
+</think>
+</template>
+</category>
+
+<category>
+<pattern>^ [ninguna paso] ^</pattern>
+<template>
+No se reservara ninguna hora entonces, que tenga un buen dia
+<think>
+<set name="topic">unknown</set>
+<set name="fecha">unknown</set>
+<set name="franja">unknown</set>
+<set name="hora">unknown</set>
+</think>
+</template>
+</category>
+
+
+</topic>
+<!--FIN DE ELEGIR HORA-->
+
+
+<!--DENTRO DE OFRECER UN DIA ALTERNATIVO-->
+<topic name="diaalt">
+    <!--SI QUIEREN OTRO DIA-->
+    <category>
+    <pattern>^ [si claro genial supuesto vale bien ok] ^</pattern>
+    <template>
+        Genial, ¿que dia le viene bien?
+        <think><set name="topic">elegirdia</set></think>
+    </template>
+    </category>
+
+    <!--SI NO-->
+    <category>
+    <pattern>^ [no paso nada] ^</pattern>
+    <template>
+        De acuerdo, llame cuando quiera.
+        <think>
+        <set name="topic">unknown</set>
+        <set name="fecha">unknown</set>
+        <set name="franja">unknown</set>
+        <set name="hora">unknown</set>
+        </think>
+    </template>
+    </category>
+</topic>
+<topic name="elegirdia">
+    <category>
+    <pattern>EL * DE *</pattern>
+    <template>
+        <think>
+        <set name="topic">unknown</set>
+        <set name="fecha">unknown</set>
+        <set name="franja">unknown</set>
+        <set name="hora">unknown</set>
+        </think>
+        <srai>QUISIERA UNA CITA PARA EL <star index="1"/> DE <star index="2"/></srai>
+    </template>
+    </category>
+</topic>
+<!--FIN DE ELEGIR DIA ALTERNATIVO-->
+
+
+</aiml>

@@ -1,0 +1,13 @@
+hoy
+manana
+pasado
+proximo lunes
+proximo martes
+proximo miercoles
+proximo jueves
+proximo viernes
+siguiente lunes
+siguiente martes
+siguiente miercoles
+siguiente jueves
+siguiente viernes

@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF8"?>
+<aiml version="2.0">
+<!--REGLAS DE AIML PARA LA RESOLUCION DE LA PRACTICA 1-->
+<!--NIVEL 0-->
+<!--JORGE GANGOSO KLOCK 25.02.2020-->
+
+<!--Saludos-->
+<category>
+	<pattern>^ hola ^</pattern>
+	<template>Hola, como estas?</template>
+</category>
+
+<category>
+	<pattern> ^bien^ </pattern>
+	<that>Hola, como estas</that>
+	<template>Me alegro</template>
+</category>
+<category>
+	<pattern>bien (y tu)</pattern>
+	<that>Hola, como estas</that>
+	<template>Bien tambien</template>
+</category>
+<category>
+	<pattern>^no^bien^</pattern>
+	<template>Bueno,seguro que el día mejora</template>
+</category>
+
+<!--Agradecimientos-->
+<category>
+	<pattern>$gracias</pattern>
+	<template>
+	<li>De nada</li>
+	<li>No hay de que</li>
+	</template>
+</category>
+
+<!--HABLAR SOBRE TI-->
+<category>
+	<pattern>habl+ [de sobre] ti</pattern>
+	<template>No me gusta mucho hablar de mi misma pero en lo referente al trabajo soy una persona muy correcta y calmada, no me gusta llamar la atencion a menos que sea por un buen trabajo</template>
+</category>
+<category>
+	<pattern>[cuent+ di+] ^ [de sobre] ti</pattern>
+	<template>
+<srai>habla sobre ti</srai>
+	</template>
+</category>
+<!--DEFECTOS PERSONALES-->
+<category>	
+	<pattern>CUAL ES TU MAYOR DEFECTO</pattern>
+	<template>Si una tarea me resulta aburrida me cuesta mucho concentrarme y dedicarle su tiempo. Por suerte no creo que ocurra con su empresa.</template>
+</category>
+<category>
+	<pattern>^ tu ^ defect+</pattern>
+	<template><srai>CUAL ES TU MAYOR DEFECTO</srai></template>
+</category>
+<category>
+	<pattern>^ defect+ [persona+ propi+]</pattern>
+	<template><srai>CUAL ES TU MAYOR DEFECTO</srai></template>
+</category>
+<category>
+	<pattern>$[negat+ peor malo] ^[de sobre] ti</pattern>
+	<template><srai>CUAL ES TU MAYOR DEFECTO</srai></template>
+</category>
+<category>
+	<pattern>^ [rasgo caracteristica] negativ+</pattern>
+	<template><srai>CUAL ES TU MAYOR DEFECTO</srai></template>
+</category>
+
+
+<!--DEFECTOS JEFE-->
+<category>
+	<pattern>QUE ASPECTOS NO TE GUSTAN DE UN JEFE</pattern>
+	<template>Sinceramente, mientras no salgamos de una estricta legalidad, cada jefe tiene derecho a tener sus politicas y personalidades y somos los trabajadores quienes debemos adecuarnos lo mejor posible para asegurar un ambiente de trabajo saludable.</template>
+</category>
+<category>	
+	<pattern>^ [negativ+ no jefe]  ^ [jefe negativ+ no] ^</pattern>
+	<template><srai>QUE ASPECTOS NO TE GUSTAN DE UN JEFE</srai></template>
+</category>
+	<!--RASGOS POSITIVOS JEFE-->
+<category>
+	<pattern>^ [aspect+ caract+ cualid+ rasg+] ^ jefe ^</pattern>
+	<template>Ante todo la seriedad y la profesionalidad</template>
+</category>
+
+<!--TRES MAYORES VIRTUDES-->
+<category>	
+	<pattern>CUALES SON TUS 3 MAYORES VIRTUDES</pattern>
+	<template>Mis mayores virtudes, seria dificil enumerarlas y mas aun en orden pero si que puedo asegurarle que si hago algo, lo hago como debe hacerse, cualquier otra cosa es una perdida de tiempo.</template>
+</category>
+<category>
+	<pattern>^ [rasg+ aspect+] ^ [positiv+ agradabl+ fav+] ^</pattern>
+	<template><srai>CUALES SON TUS 3 MAYORES VIRTUDES</srai></template>
+</category>
+<category>
+	<pattern>^ [que cuales] ^ mejor+ ^</pattern>
+	<template><srai>CUALES SON TUS 3 MAYORES VIRTUDES</srai></template>
+</category>
+
+
+<!--PREPARADO PARA EL TRABAJO-->
+<category>
+	<pattern>Te consideras preparado para desempenar las funciones de este puesto</pattern>
+	<template>Nunca se esta preparado del todo pero desde luego poseo los conocimientos y las ganas de empezar a hacer un buen trabajo y de ir creciendo junto con la empresa.</template>
+</category>
+<category>
+	<pattern>^ [preparado cualificado listo] ^ [funciones tareas obligaciones trabajo aqui empresa en] ^</pattern>
+	<template><srai>Te consideras preparado para desempenar las funciones de este puesto</srai></template>
+</category>
+
+<!--EXPERIENCIA EN EQUIPO-->
+<category>
+	<pattern>Tienes experiencia en la realizacion de proyectos en equipos de trabajo</pattern>
+	<template>Desde luego no va a ser mi primera vez y hasta ahora no he recibido quejas de ningun companero</template>
+</category>
+<category>
+	<pattern>^ [experiencia practica habit+ acostumbrado constumbre] ^ [equipo+ compa\F1er+ camarad+ otr+ mas] ^</pattern>
+	<template><srai>Tienes experiencia en la realizacion de proyectos en equipos de trabajo</srai></template>
+</category>
+
+<!--TRABAJAR FUERA ESPECIALIDAD-->
+<category>
+	<pattern>Realizarias un trabajo que no fuera con tu especialidad</pattern>
+	<template>Siempre y cuando entre dentro de mis capacidades no veo por que deberia importarme</template>
+</category>
+<category>
+	<pattern>^ [no alejado dist+] * especiali+ ^</pattern>
+	<template><srai>Realizarias un trabajo que no fuera con tu especialidad</srai></template>
+</category>
+
+<!--DESPLAZARSE LEJOS-->
+<category>
+	<pattern>Te desplazarias de manera ocasional a otros lugares</pattern>
+	<template>Siempre y cuando no me lo impida alguna situacion de emergencia no hay cosa que me guste mas que un buen paseo</template>
+</category>
+<category>
+	<pattern>^ [transp+ ir+ mover+ desplaz+ acud+ ven+] ^</pattern>
+	<template><srai>Te desplazarias de manera ocasional a otros lugares</srai></template>
+</category>
+
+<!--CREATIVIDAD-->
+<category>
+	<pattern>Te consideras una persona creativa</pattern>
+	<template>Aunque soy capaz de innovar en ocasiones, definitivamente mi punto fuerte consiste en optimizar respuestas existentes mas que en crear nuevas</template>
+</category>
+<category>
+	<pattern>^ [creativ+ origin+ innov+] ^</pattern>
+	<template><srai>Te consideras una persona creativa</srai></template>
+</category>
+<category>
+	<pattern>^ [hacer realizar] ^ [nuev+ nov+] ^</pattern>
+	<template><srai>Te consideras una persona creativa</srai></template>
+</category>
+
+<!--EXPECTATIVAS-->
+<category>
+	<pattern>Que expectativas tienes de este trabajo</pattern>
+	<template>Espero que sea un lugar donde pueda estar a gusto y cumplir mis objetivos a la vez que ayudo a fortalecer al equipo</template>
+</category>
+<category>
+	<pattern>^ [expect+ esper+] ^ [trabajo empleo proyecto aqui nosotros en] ^</pattern>
+	<template><srai>Que expectativas tienes de este trabajo</srai></template>
+</category>
+
+<!--TRABAJOS PARECIDOS-->
+<category>
+	<pattern>Que trabajos has tenido en esta tematica</pattern>
+	<template>Pues que se me vengan a la mente gestor de bases de datos y tambien participe en la creacion de varios programas de software libre relacionados con editores de texto e imagenes</template>
+</category>
+<category>
+	<pattern>^ [trabaj+ emple+ particip+] ^ [tem+ parecid+ semejant+ relacio+ ] ^</pattern>
+	<template><srai>QUE TRABAJOS HAS TENIDO EN ESTA TEMATICA</srai></template>
+</category>
+
+<!--TRABAJO CASA-->
+<category>
+	<pattern>Normalmente te llevas el trabajo a casa</pattern>
+	<template>Hasta el momento no me ha sido necesario para cumplir con las fechas de entrega, aunque si fuera necesario seria mi obligacion por supuesto</template>
+</category>
+<category>	
+	<pattern>^ [trabaj+ tare+ obligac+] ^ [casa hogar entorn+] ^</pattern>
+	<template><srai>Normalmente te llevas el trabajo a casa</srai></template>
+</category>
+
+<!--ASPIRACION SALARIAL-->
+<category>
+	<pattern>Cuales son tus aspiraciones salariales</pattern>
+	<template>Pues a pesar de que se trata de un trabajo que requiere una cualificacion moderada, siempre he sido una persona muy sencilla y con lo suficiente para no necesitar un segundo trabajo estaria bien por mi.</template>
+</category>
+<category>	
+	<pattern>^ [esper+ gustar+ aspir+ querr+ cree piensa pens+] ^ [cobr+ recib+ salar+ ] ^</pattern>
+	<template><srai>CUALES SON TUS ASPIRACIONES SALARIALES</srai></template>
+</category>
+
+
+<!--DONDE TE VES DENTRO DE X ANIOS-->
+<category>
+	<pattern>$Donde te ves (dentro de)(en) <set>number</set> anos</pattern>
+	<template>Dentro de <star/> anos?. Mientras ustedes esten satisfechos con mi trabajo y yo me encuentre a gusto con ustedes, espero que en esta misma sala entregando archivos en lugar de respondiendo a preguntas personales</template>
+</category>
+<category>
+	<pattern>Donde te ves en el futuro</pattern>
+	<template>Pues depende del tiempo, pero en una agradable casa que me podre permitir gracias al sueldo de este empleo en el que habre ascendido con mi esfuerzo.</template>
+</category>
+<category>
+	<pattern>^ [donde como que] ^ [dentro futuro anos tiempo] ^</pattern>
+	<template><srai>Donde te ves en el futuro</srai></template>
+</category>
+
+<!--FALTA EXPERIENCIA-->
+<category>
+	<pattern>No tienes experiencia para el puesto a desempenar</pattern>
+	<template>Pero si los conocimientos, y en algun lugar tendre que adquirir la experiencia, al fin y al cabo dicen que los jovenes aprendemos rapido y que el ser humano es especialista en adaptarse a entornos nuevos.</template>
+</category>
+<category>
+	<pattern>^ [No ninguna falta experiencia]  ^ [experiencia insuficiente] ^</pattern>
+	<template><srai>No tienes experiencia para el puesto a desempenar</srai></template>
+</category>
+
+<!--CONOCIMIENTO EMPRESA Y PUESTO-->
+<category>
+	<pattern>Que sabes de la empresa y el puesto de trabajo</pattern>
+	<template>Pues se quienes son, a que se dedican y lo que debo realizar, quien en su sano juicio vendria a una entrevista de trabajo sin saber eso.</template>
+</category>
+<category>
+	<pattern>^ [sab+ conoc+ aprend+ ]  ^ [empresa trabajo+ tarea+ deb+ hacer sitio lugar nosotros nuestr+] ^</pattern>
+	<template><srai>QUE SABES DE LA EMPRESA Y EL PUESTO DE TRABAJO</srai></template>
+</category>
+
+<!--JEFE SE EQUIVOCA-->
+<category>
+	<pattern>Que haces cuando consideras que tu jefe no tiene la razon</pattern>
+	<template>Si es una orden acatarla, ya que por eso es el jefe, sin embargo si hay espacio para el dialogo nunca esta de mas compartir opiniones al fin y al cabo el jefe tambien forma parte del equipo</template>
+</category>
+<category>
+	<pattern>^ $jefe ^ [razon no mal equivo+] ^</pattern>
+	<template><srai>Que haces cuando consideras que tu jefe no tiene la razon</srai></template>
+</category>
+
+
+<!--POR QUE YO-->
+<category>
+	<pattern>Por que deberiamos escogerte a ti</pattern>
+	<template>No dudo que habra pasado y pasara por aqui gente mas que cualificada y que no soy mas que otro en ese monton, pero si no es demasiado descaro, lo que las empresas necesitan ahora es gente joven y con energia para traer el futuro con sus propias manos y por supuesto mentes sin miedo a lo desconocido. </template>
+</category>
+<category>
+	<pattern>^ [Por que raz+ caus+ cos+ escog+ eleg+ contrat+ cre+] ^ ti ^ </pattern>
+	<template><srai>Por que deberiamos escogerte a ti</srai></template>
+</category>
+</aiml>
