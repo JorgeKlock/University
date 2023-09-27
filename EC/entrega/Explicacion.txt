@@ -1,0 +1,11 @@
+Password: (patata)
+
+La contraseña introducida puede localizarse fácilmente en [rsp+48], por tanto, puede saltarse la comprobación copiando en [rsp+48] el contenido de password que se encuentra marcada por la etiqueta password y se accede mediante un OFFSET en tiempo de ejecución*.
+
+Alternativamente se puede intentar descifrar el bucle (etiquieta .L7) y ver como a la variable pw (la contraseña introducida por el usuario) se le va sumando %bl, que dentro del for contiene el valor de la variable i. Este valor se suma a lo que contiene 48(%rax,%rsp,1), que es el iésimo elemento de pw[]. &pw = rsp+48, y en %rax tenemos una copia de i al igual que en %bl.
+
+Pin: (1125)
+
+El pin introducido se almacena en [rsp+44] y se puede ver fácilmente mediante las instrucciones mov rsp+44,eax y lea (%rax,%rax,4), %eax que lo que estamos realizando no es más que multiplicar *5 y es este valor el que vuelve a trasladarse a rsp+44. Por tanto para descubrir el pin basta con saber el valor del pin con el que se va a comparar al que también se accede mediante un OFFSET en tiempo de ejecución*. Y sabiendo que el programa multiplica por 5 dividir el pin correcto entre 5 y ese es el que hay que introducir.
+
+*Para descubrir el valor de password y passcode, colocar un breakpoint en el momento de la comparación e inspeccionar los valores de los registros que intervienen.
