@@ -1,0 +1,74 @@
+Principal 
+{	
+	var 		
+		entero a , b  c = 2 
+		real b  c , f = 1 ;
+		booleano a = verdadero ;
+		caracter a = "a"  ;
+		lista de caracter a = ["a", "b", "c"] ;
+		lista de real variable = [3.982 , 2.231 , 9.6432] ;
+		lista de booleano h = [ falso , verdadero ] ; 
+		lista de entero prueba =  [ 1 , 2 , 3 ] ;
+	varend
+	
+	entero suma (real p1, real p2) {
+		var
+			entero x1 , x2 = 0 ;
+		varend
+
+		booleano sumainutil (entero p, entero previo) {
+
+			caracter funcionTerminar ( ) {
+				x =  x + 1;
+				retorno x
+			}
+
+			si ( p == p + previo){
+			    	retorno Verdadero
+			    } sino {
+		   		retorno Falso
+		    	    }
+
+		}
+
+		real sumaUtil ( booleano : x ){
+			s = 1 + x;
+			retorno s		
+		}
+
+		x = x1 ( sumaUtil( sumaInutil( a , b ) ) ) / 1;
+
+		x = ( x1 & || ( x2 * + 2 ) ) & 1;
+
+		si(sumainutil(x, x1)){
+		    retorno 1
+		}
+		sino{
+		    retorno p1 + p2
+		}
+
+
+
+	}
+
+	para x=0; hasta 2 hacer {
+		a<<
+	}
+
+	para h=1; bajando_hasta p hacer {
+		a<<
+	}
+
+    	a = a++"patata"@0;
+    	a = a--1;
+
+    	mientras(?a != ?($a)){
+    		a>>
+    	}
+
+	salida(8 ,"holadios" , s)
+	entrada(x1)
+
+ 
+}
+

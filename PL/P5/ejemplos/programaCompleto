@@ -1,0 +1,16 @@
+Principal 
+{	
+	var 		
+		entero e1 , e2 , e3 = 2;
+		real pReal = 0.2;
+		real r1 , r2 = 2;
+		booleano bool1 , bool2 = Verdadero;
+	varend
+	
+
+	e4 = e1 + e2
+	e5 = e4 + e3 
+	r3 = r1 + r2 
+
+
+}

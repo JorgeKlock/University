@@ -1,0 +1,20 @@
+Principal 
+{	
+	var 		
+		entero e1 = 1;
+		entero e2 = 2;
+		entero e7 = 4;
+		entero e3,e4,e5 = 6;
+		real pReal = 0.2;
+		real r1 , r2,r3 = 2;
+		booleano bool1 , bool2 = Verdadero;
+	varend
+
+	si(e1>e2){
+		r1 = 0.2+0.1;
+	} sino {
+		r2 = 0.2+0.1;
+	}
+
+
+}
