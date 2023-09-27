@@ -1,0 +1,9 @@
+PS1="[JorgeGangosoKlock \u@\h:\w] \D{%F %A}\n$"
+ssh -X d2estudiante8@atcgrid.ugr.es 
+sftp d2estudiante8@atcgrid.ugr.es
+	passw: 	XXXXXXXX
+
+gcc -fopenmp -O2 codigo.c -o programa
+
+put 
+get
