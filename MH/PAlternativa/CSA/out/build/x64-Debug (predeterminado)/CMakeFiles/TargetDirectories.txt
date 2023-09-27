@@ -1,0 +1,3 @@
+D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA/out/build/x64-Debug (predeterminado)/CMakeFiles/CSA.dir
+D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA/out/build/x64-Debug (predeterminado)/CMakeFiles/edit_cache.dir
+D:/JorgeGangosoKlock/Universidad/Asignaturas/MH/PAlternativa/CSA/out/build/x64-Debug (predeterminado)/CMakeFiles/rebuild_cache.dir
