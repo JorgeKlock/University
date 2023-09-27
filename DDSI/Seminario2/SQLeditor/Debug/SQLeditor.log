@@ -1,0 +1,11 @@
+﻿  main.cpp
+main.obj : error LNK2019: símbolo externo "public: __thiscall SAString::SAString(char const *)" (??0SAString@@QAE@PBD@Z) sin resolver al que se hace referencia en la función _main
+main.obj : error LNK2019: símbolo externo "public: char const * __thiscall SAString::GetMultiByteChars(void)const " (?GetMultiByteChars@SAString@@QBEPBDXZ) sin resolver al que se hace referencia en la función __catch$_main$1
+main.obj : error LNK2019: símbolo externo "public: __thiscall SAString::~SAString(void)" (??1SAString@@QAE@XZ) sin resolver al que se hace referencia en la función _main
+main.obj : error LNK2019: símbolo externo "public: __thiscall SAConnection::SAConnection(void)" (??0SAConnection@@QAE@XZ) sin resolver al que se hace referencia en la función _main
+main.obj : error LNK2019: símbolo externo "public: virtual __thiscall SAConnection::~SAConnection(void)" (??1SAConnection@@UAE@XZ) sin resolver al que se hace referencia en la función __catch$_main$1
+main.obj : error LNK2019: símbolo externo "public: void __thiscall SAConnection::Connect(class SAString const &,class SAString const &,class SAString const &,enum eSAClient,void (__cdecl*)(class SAConnection &,enum eSAConnectionHandlerType))" (?Connect@SAConnection@@QAEXABVSAString@@00W4eSAClient@@P6AXAAV1@W4eSAConnectionHandlerType@@@Z@Z) sin resolver al que se hace referencia en la función _main
+main.obj : error LNK2019: símbolo externo "public: void __thiscall SAConnection::Disconnect(void)" (?Disconnect@SAConnection@@QAEXXZ) sin resolver al que se hace referencia en la función _main
+main.obj : error LNK2019: símbolo externo "public: void __thiscall SAConnection::Rollback(void)" (?Rollback@SAConnection@@QAEXXZ) sin resolver al que se hace referencia en la función __catch$_main$0
+main.obj : error LNK2019: símbolo externo "public: class SAString __thiscall SAException::ErrText(void)const " (?ErrText@SAException@@QBE?AVSAString@@XZ) sin resolver al que se hace referencia en la función __catch$_main$1
+D:\JorgeGangosoKlock\Universidad\Asignaturas\DDSI\Seminario2\SQLeditor\Debug\SQLeditor.exe : fatal error LNK1120: 9 externos sin resolver
